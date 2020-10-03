@@ -1,0 +1,35 @@
+
+# An example of ClusterConfig object creating Fargate profiles.
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: loadtest-cluster
+  region: eu-west-1
+
+nodeGroups:
+  - name: ng-1
+    instanceType: m5.large
+    desiredCapacity: 1
+
+fargateProfiles:
+  - name: fp-default
+    selectors:
+      # All workloads in the "default" Kubernetes namespace will be
+      # scheduled onto Fargate:
+      - namespace: default
+      # All workloads in the "kube-system" Kubernetes namespace will be
+      # scheduled onto Fargate:
+      - namespace: kube-system
+  - name: fp-load
+    selectors:
+      # All workloads in the "load" Kubernetes namespace matching the following
+      # label selectors will be scheduled onto Fargate:
+      - namespace: load
+        labels:
+          env: dev
+          checks: passed
+    tags:
+      env: dev
+      name: fp-load
