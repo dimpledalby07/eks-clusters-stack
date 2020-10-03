@@ -4,7 +4,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: dimple-cluster-1
+  name: app-test-cluster
   region: eu-west-1
 
 nodeGroups:
