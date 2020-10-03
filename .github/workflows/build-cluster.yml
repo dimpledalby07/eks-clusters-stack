@@ -34,4 +34,5 @@ jobs:
       - name: Build Cluster
         run: |
           echo Building test clusters
-          eksctl create cluster -f ../eks/loadtest-clusterspec.yaml
+          ls -al
+          eksctl create cluster -f eks/loadtest-clusterspec.yaml
