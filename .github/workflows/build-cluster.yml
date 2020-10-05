@@ -37,6 +37,11 @@ jobs:
           aws-region: eu-west-1
       - name: Build Cluster
         run: |
-          echo Building test clusters
+          echo Building test cluster
           ls -al
           eksctl create cluster -f eks/app-clusterspec.yaml
+      - name: Delete Cluster
+        run: |
+          echo Deleting test cluster
+          ls -al
+          eksctl delete cluster -f eks/app-clusterspec.yaml    
