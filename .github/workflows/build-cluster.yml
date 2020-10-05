@@ -35,13 +35,14 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
+      - name: Delete Cluster
+        run: |
+          echo Deleting test cluster
+          ls -al
+          eksctl delete cluster -f eks/app-clusterspec.yaml      
       - name: Build Cluster
         run: |
           echo Building test cluster
           ls -al
           eksctl create cluster -f eks/app-clusterspec.yaml
-      - name: Delete Cluster
-        run: |
-          echo Deleting test cluster
-          ls -al
-          eksctl delete cluster -f eks/app-clusterspec.yaml    
+  
