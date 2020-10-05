@@ -1,9 +1,4 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the main branch
 on:
   push:
     branches: [ main ]
@@ -34,15 +29,15 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-1
-      - name: Delete Cluster
-        run: |
-          echo Deleting test cluster
-          ls -al
-          eksctl delete cluster -f eks/app-clusterspec.yaml      
+          aws-region: eu-west-1    
       - name: Build Cluster
         run: |
           echo Building test cluster
           ls -al
           eksctl create cluster -f eks/app-clusterspec.yaml
+      - name: Delete Cluster
+        run: |
+          echo Deleting test cluster
+          ls -al
+          eksctl delete cluster -f eks/app-clusterspec.yaml      
   
