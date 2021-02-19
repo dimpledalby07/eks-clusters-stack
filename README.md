@@ -1,4 +1,5 @@
 # eks-clusters
 
 
-![Compute Design](cluster-poc.png)
+![Compute Design](compute-design1.png)
+![Compute Design](compute-design2.png)
