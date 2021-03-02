@@ -1,0 +1,36 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: dev-cluster-1
+  region: eu-west-1
+  #version: 1.19
+
+managedNodeGroups:
+  - name: dev-cluster-1-worker-apps
+    instanceType: m5.large
+    minSize: 1
+    desiredCapacity: 1
+    maxSize: 2
+    availabilityZones: ["eu-west-1a", "eu-west-1b"]
+    volumeSize: 20
+    # securityGroups:
+    #   attachIDs: ["sg-1", "sg-2"]
+    ssh:
+      allow: true
+      # publicKeyPath: ~/.ssh/ec2_id_rsa.pub
+      # new feature for restricting SSH access to certain AWS security group IDs
+      # sourceSecurityGroupIds: ["sg-00241fbb12c607007"]
+    labels: {role: worker}
+    tags:
+      nodegroup-role: worker
+    iam:
+      withAddonPolicies:
+        certManager: true
+cloudWatch:
+  clusterLogging:
+    # enable specific types of cluster control plane logs
+    enableTypes: ["audit", "authenticator", "controllerManager", "scheduler", "api"]
+    # all supported types: "api", "audit", "authenticator", "controllerManager", "scheduler"
+    # supported special values: "*" and "all"        
+
