@@ -18,7 +18,11 @@ jobs:
     - name: Check out code
       uses: actions/checkout@main
     - name: Run yamllint
-      uses: actionshub/yamllint@main
+      run: |
+        git clone git@github.com:stackrox/kube-linter.git
+        make build
+        .gobin/kube-linter version
+        kube-linter lint cluster-infra/*.yaml
 
       # # Runs a single command using the runners shell
       # - name: Install eksctl
