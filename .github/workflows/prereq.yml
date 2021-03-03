@@ -17,8 +17,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Check out code
       uses: actions/checkout@main
-    - name: test
-      uses: instrumenta/kubeval-action@master
+    # - name: test
+    #   uses: instrumenta/kubeval-action@master
+    - name: Run Kubernetes tools  
+      uses: stefanprodan/kube-tools@v1
+      with:
+        kubectl: 1.18.2
+        command: |
+          echo "Run kubeval"
+          kubeval --strict  --ignore-missing-schemas -d cluster-infra, flux-addons
 
       # # Runs a single command using the runners shell
       # - name: Install eksctl
