@@ -20,9 +20,9 @@ jobs:
     - name: Run yamllint
       run: |
         git clone git@github.com:stackrox/kube-linter.git
-        sudo make build
-        .gobin/kube-linter version
-        kube-linter lint cluster-infra/*.yaml
+        # sudo make build
+        # .gobin/kube-linter version
+        # kube-linter lint cluster-infra/*.yaml
 
       # # Runs a single command using the runners shell
       # - name: Install eksctl
