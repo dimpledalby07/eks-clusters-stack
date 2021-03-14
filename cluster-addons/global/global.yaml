@@ -9,6 +9,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./global
+  path: ./cluster-addons/global
   prune: true
   validation: client
