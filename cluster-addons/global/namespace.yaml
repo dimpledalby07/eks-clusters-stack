@@ -14,8 +14,8 @@ kind: Namespace
 metadata:
   name: security
 ---
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: podinfo
----
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: podinfo
+# ---
