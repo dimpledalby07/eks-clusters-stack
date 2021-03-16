@@ -9,6 +9,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./app/dev
+  path: ./app/dev/podinfo
   prune: true
   validation: client
