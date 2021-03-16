@@ -3,14 +3,14 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: podinfo-dev
-  namespace: dev
+  namespace: podinfo
   annotations:
     fluxcd.io/automated: "true"
     filter.fluxcd.io/chart-image: glob:dev-*
 spec:
   releaseName: podinfo-dev
   chart:
-    # git: git@github.com:fluxcd/helm-operator-get-started
+    git: git@github.com/dimpledalby07/eks-clusters-stack
     path: charts/podinfo
     ref: master
   values:
